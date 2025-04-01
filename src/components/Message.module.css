@@ -1,0 +1,48 @@
+.messageBox, .otherMessageBox {
+    border-radius: 20px;
+    padding: 4px 18px;
+    max-width: 60%;
+    display: inline-block;
+}
+
+.otherMessageBox {
+    background: powderblue;
+    color: black;
+}
+
+.messageBox {
+    background: #4098EE;
+    color: white;
+}
+
+.messageText, .otherMessageText {
+    width: 100%;
+    letter-spacing: 0;
+    float: left;
+    font-size: 15px;
+    /*if overflow, break words into new lines and take space at bottom*/
+    word-wrap: break-word;
+    font-family: Helvetica;
+}
+
+.messageContainer, .otherMessageContainer {
+    display: flex;
+    padding: 0 5%;
+    margin-top: 3px;
+}
+
+.messageContainer {
+    justify-content: flex-end;
+}
+
+.otherMessageContainer {
+    justify-content: flex-start;
+}
+
+.currUser, .otherUser {
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+    letter-spacing: 0.3px;
+    padding: 0 5px;
+}

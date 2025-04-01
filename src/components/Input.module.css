@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    border-top: 2px solid #D3D3D3;
+    height: 10%;
+}
+
+.input {
+    border: none;
+    border-radius: 0 0 0 10px;
+    padding: 4%;
+    width: 80%;
+    font-size: 15px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.sendButton {
+    color: #FFFFFF !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #5E9AFF;
+    border: none;
+    width: 20%;
+    border-radius: 0 0 10px 0;
+}

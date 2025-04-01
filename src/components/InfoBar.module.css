@@ -1,0 +1,37 @@
+.outerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #5E9AFF;
+    border-radius: 20px 20px 0 0;
+    height: 60px;
+    width: 100%;
+}
+
+.left {
+    display: flex;
+    flex: 0.5;
+    align-items: center;
+    margin-left: 5px;
+    color: white;
+}
+
+.right {
+    display: flex;
+    flex: 0.5;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.roomName {
+    width: 40vw;
+    overflow: auto;
+    scrollbar-color: white transparent;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .roomName {
+        width:68vw;
+        overflow: auto;
+    }
+}
