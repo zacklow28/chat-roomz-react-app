@@ -10,18 +10,16 @@ const Chat = () => {
     const ENDPOINT = "http://localhost:5000";
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
+    const [message, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search);
         setRoom(room);
         setName(name);
 
-        //only connect if socket doesn't exist
-        if (!socket) {
-            socket = io(ENDPOINT);
-            socket.emit("join", { name, room }, ({ }) => {
-            });
-        };
+        socket = io(ENDPOINT);
+        socket.emit("join", { name, room }, () => {});
 
         //cleanup socket connection when component unmount
         return () => {
@@ -30,8 +28,40 @@ const Chat = () => {
 
     }, [location.search]);
 
+
+    useEffect(() => {
+        socket.on("message", (message) => {
+            //spread all the message in messages and then chain the new one
+            setMessages([...messages, message]);
+        })
+
+        return () => {
+            socket.off("message");
+        }
+
+    }, [messages]);
+
+
+    const sendMessage = (event) => {
+        event.preventDefault();
+
+        //take updated message and check if it is empty
+        if (message.length) {
+            //sned to backend, and then clear the message variable
+            console.log("send");
+            socket.emit("sendMessage", message, () => setMessage(""));
+        }
+    }
+
+    console.log(message, messages);
+
     return (
+        <>
         <h1>{`Hello ${name}! Welcome to Room ${room}`}</h1>
+        <div><input value={message}
+        onChange={(event) => setMessage(event.target.value)}
+        onKeyPress={(event) => event.key === "Enter" ? sendMessage(event) : null}/></div>
+        </>
     );
 };
 
