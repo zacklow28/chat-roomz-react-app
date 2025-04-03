@@ -56,3 +56,11 @@
     background: #df6b6b;
     font-size: 14px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .innerContainer {
+        width: 80%;
+        border: 2px solid white;
+        border-radius: 10px;
+    }
+}
