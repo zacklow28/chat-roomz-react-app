@@ -1,0 +1,6 @@
+.messages {
+    /*need to have the flex and overflow property to allow it to scroll*/
+    overflow: auto;
+    flex: auto;
+    padding: 3% 0;
+}
