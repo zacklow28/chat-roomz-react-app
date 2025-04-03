@@ -10,7 +10,7 @@ let socket;
 
 const Chat = () => {
     const location = useLocation();
-    const ENDPOINT = "wss://dogwood-site-455708-r5.as.r.appspot.com";
+    const ENDPOINT = "https://dogwood-site-455708-r5.as.r.appspot.com";
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
     const [message, setMessage] = useState("");
