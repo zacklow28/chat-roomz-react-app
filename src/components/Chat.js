@@ -23,7 +23,7 @@ const Chat = () => {
         setName(name);
 
         socket = io(ENDPOINT, {
-            transports: ["websocket"],
+            transports: ["polling"],
         });
 
         socket.emit("join", { name, room }, () => {});
