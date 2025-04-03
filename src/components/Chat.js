@@ -22,7 +22,10 @@ const Chat = () => {
         setRoom(room);
         setName(name);
 
-        socket = io(ENDPOINT);
+        socket = io(ENDPOINT, {
+            transports: ["websocket"],
+        });
+
         socket.emit("join", { name, room }, () => {});
 
         //cleanup socket connection when component unmount
