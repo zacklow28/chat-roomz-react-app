@@ -1,0 +1,22 @@
+.users {
+    height: 40px;
+    overflow: auto;
+    padding-left: 10px;
+}
+
+.user {
+    padding-right: 10px;
+    font-family: Helvetica;
+    opacity: 0.8;
+}
+
+.heading {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.container {
+    background: linear-gradient(pink, white);
+}

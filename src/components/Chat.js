@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
 import styles from "./Chat.module.css";
-import { InfoBar, Input, Messages } from "../components";
+import { InfoBar, Input, Messages, UsersList } from "../components";
 
 
 let socket;
@@ -15,6 +15,7 @@ const Chat = () => {
     const [room, setRoom] = useState("");
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search);
@@ -44,6 +45,16 @@ const Chat = () => {
 
     }, [messages]);
 
+    useEffect(() => {
+        socket.on("roomData", ({ room, users }) => {
+            setUsers(users);
+        })
+
+        return () => {
+            socket.off("roomData");
+        }
+    }, [users]);
+
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -62,7 +73,8 @@ const Chat = () => {
         <div className={styles.outerContainer}>
             <div className={styles.container}>
             <InfoBar room={room}/>
-            <Messages messages={messages} name={name}/>
+            <UsersList users={users}/>
+            <Messages messages={messages} name={name} />
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
             </div>
         </div>
